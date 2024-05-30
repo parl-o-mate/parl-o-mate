@@ -3,15 +3,28 @@
 
 {% include head.html %}
 
+<style>
+  /* Add the CSS for snap scrolling */
+  .snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh; /* Make sure the container takes full height */
+  }
+  
+  .snap-section {
+    scroll-snap-align: start;
+    height: 100vh; /* Make each section take full height */
+  }
+</style>
+
 <body id="page-top">
   {% include nav.html %}
-  {% include header.html %}
-  {% include call-to-action.html %}
-  {% include services.html %}
-  {% include portfolio.html %}
-  {% include aside.html %}
-  {% include contact.html %}
-  {% include scripts.html %}
+  
+  <!-- Wrap sections in a snap-container div -->
+  <div class="snap-container">
+    <div class="snap-section">{% include header.html %}</div>
+    <div class="snap-section">{% include overview.html %}</div>
+  </div>
 </body>
 
 </html>

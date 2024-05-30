@@ -1,10 +1,128 @@
 <header>
+    <style>
+        .header-content-inner {
+            margin-left: -40px !important; /* Move the content 80px to the left */
+        }
+
+        .header-content-inner h1 {
+            font-family: 'Verdana', Gadget, sans-serif !important;
+            font-size: 80px !important;
+            color: #2a2a25 !important;
+            text-transform: capitalize !important;
+            margin-top: -100px !important; /* Move the h1 header 100px down */
+        }
+
+        .header-content-inner p {
+            font-family: Courier !important;
+            font-weight: bold !important;
+            font-size: 18px !important;
+            color: #000000 !important;
+            margin-top: -60px !important; /* Move the p element 20px up */
+        }
+
+        .header-content-inner hr {
+            border-top: none !important; /* Add this rule to remove the border */
+        }
+
+        .stat {
+            color: #000 !important; /* Change text color to black */
+            margin-bottom: 10px;
+            font-family: Garamond !important; /* Set font to Garamond */
+        }
+        .stat h3 {
+            font-size: 16px !important; /* Smaller font size for headers */
+            color: #000 !important; /* Ensure header text color is black */
+            font-family: Courier !important; /* Set font to Courier */
+            font-weight: bold !important;
+        }
+        .stat .count {
+            font-size: 14px !important; /* Smaller font size for counts */
+            font-weight: bold;
+            color: #000 !important; /* Ensure count text color is black */
+            font-family: 'Verdana', sans-serif !important; /* Set font to Verdana */
+        }
+        .stat-grid-container {
+            display: flex;
+            justify-content: center;
+            margin-top: -50px !important; /* Move the statistics section up by 50px */
+        }
+        .stat-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 500px; /* Restrict the width of the grid container */
+            gap: -10px; /* Add some gap between items */
+        }
+        .stat-item {
+            flex: 1 1 calc(30% - 20px); /* Adjust to make 3 columns */
+            text-align: center;
+            margin: 0px !important;
+            font-family: 'Verdana', sans-serif !important; /* Set font to Verdana */
+        }
+    </style>
     <div class="header-content">
         <div class="header-content-inner">
-            <h1>Your Favorite Source of Free Bootstrap Themes</h1>
+            <h1>Parl-o-mate!</h1>
             <hr>
-            <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-            <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            <p>Find out what's going on in the SG parliament!</p>
+            <div class="stat-grid-container">
+                <div id="statistics" class="stat-grid">
+                    <div class="stat-item stat">
+                        <h3>Members</h3>
+                        <div class="count" id="current-members-count">0</div>
+                    </div>
+                    <div class="stat-item stat">
+                        <h3>Speeches</h3>
+                        <div class="count" id="speeches-count">0</div>
+                    </div>
+                    <div class="stat-item stat">
+                        <h3>Bills</h3>
+                        <div class="count" id="bills-count">0</div>
+                    </div>
+                    <div class="stat-item stat">
+                        <h3>Members to date</h3>
+                        <div class="count" id="members-count">0</div>
+                    </div>
+                    <div class="stat-item stat">
+                        <h3>Topics</h3>
+                        <div class="count" id="topics-count">0</div>
+                    </div>
+                    <div class="stat-item stat">
+                        <h3>Primary Questions</h3>
+                        <div class="count" id="questions-count">0</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        // Function to animate the count-up
+        function animateCount(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                let value = Math.floor(progress * (end - start) + start);
+                if (value >= 1000) {
+                    value = (value / 1000).toFixed(1) + 'k'; // Format the number with 'k'
+                }
+                element.textContent = value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Trigger the animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const duration = 500; // 1 second
+            animateCount(document.getElementById('current-members-count'), 0, 98, duration);
+            animateCount(document.getElementById('speeches-count'), 0, 79700, duration);
+            animateCount(document.getElementById('bills-count'), 0, 707, duration);
+            animateCount(document.getElementById('members-count'), 0, 193, duration);
+            animateCount(document.getElementById('topics-count'), 0, 17100, duration);
+            animateCount(document.getElementById('questions-count'), 0, 17400, duration);
+        });
+    </script>
 </header>
