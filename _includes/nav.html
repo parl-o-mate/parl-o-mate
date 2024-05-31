@@ -17,7 +17,6 @@
                     <a class="page-scroll" href="/">Parl-o-mate</a>
                 </li>
                 <li>
-
                     <a class="page-scroll" href="/participation">Who's attending?</a>
                 </li>
                 <li class="dropdown">
@@ -43,74 +42,3 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-
-<style>
-    body {
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-    }
-
-    .navbar {
-        position: fixed;
-        top: 100px;
-        left: 0;
-        height: 100%;
-        width: 140px; /* Increased width by 20% */
-        background-color: transparent !important; /* Always transparent background */
-        border: none; /* Remove border if necessary */
-        z-index: 1000; /* Set a high z-index to appear above other content */
-    }
-
-    .navbar-header {
-        display: none; /* Hide the toggle button since it's not needed for vertical navbar */
-    }
-
-    .navbar-collapse {
-        padding: 0;
-    }
-
-    .nav > li {
-        display: block;
-    }
-
-    .nav > li > a {
-        padding: 10px 20px;
-        color: black !important; /* Always black text color */
-        font-weight: bold !important; /* Set font to bold */
-        font-size: 14px !important; /* Set specific font size */
-        font-family: Courier !important; /* Set specific font style */
-        text-transform: capitalize !important; /* Ensure text is uppercase */
-        transition: transform 0.3s ease-in-out; /* Smooth animation */
-    }
-
-    .nav > li > a:hover {
-        transform: translateX(10px); /* Move text 10px to the right on hover */
-    }
-
-    .dropdown-menu {
-        display: none;
-        padding-left: 20px; /* Indent sub-items */
-        background-color: transparent !important; /* Transparent background */
-        border: none !important; /* Remove border */
-        box-shadow: none !important; /* Remove box shadow */
-        position: static !important; /* Ensure it stays within the normal document flow */
-    }
-
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
-    .dropdown-menu > li > a {
-        font-size: 12px !important; /* Smaller font size for sub-items */
-        padding: 5px 20px; /* Adjust padding for sub-items */
-        font-family: Courier !important; /* Set specific font style for sub-items */
-    }
-
-    .dropdown-menu > li > a:hover {
-        transform: translateX(10px) !important; /* Move text 10px to the right on hover */
-    }
-
-    /* Remove bullet points for sub-items */
-    .dropdown-menu > li {
-        list-style-type: none;
-    }
-</style>

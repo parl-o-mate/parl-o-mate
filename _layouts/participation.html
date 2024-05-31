@@ -1,52 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background: url('img/header.jpg') no-repeat center center fixed; /* Set background image */
-            background-size: cover; /* Ensure the background covers the entire page */
-            padding: 20px; /* Adjust padding as needed */
-        }
-        header {
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .iframe-container {
-            flex-grow: 1;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        iframe {
-            height: 800px;
-            width: calc(100vw - 400px);
-            border: none;
-            overflow: hidden;
-        }
-    </style>
-    <!-- Include the necessary Bootstrap CSS and JS if not already included -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Include Bootstrap CSS -->
+        <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | relative_url }}">
+        <!-- Include Compiled Custom CSS -->
+        <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
+        <!-- Include necessary JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+     
+<body id="participation">
     {% include nav.html %}
     <div class="iframe-container">
-        <iframe src="https://parl-o-mate.streamlit.app/?embed=True"></iframe>
+        {% include participation.html %}
     </div>
 </body>
 </html>

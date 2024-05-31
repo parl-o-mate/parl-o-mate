@@ -67,84 +67,104 @@ aside {
     padding: 0;
 }
 
-// Navigation
+.iframe-container {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.navbar-default {
-    background-color: white;
-    border-color: rgba($theme-dark, .5);
-    @include sans-serif-font;
-    @include transition-all;
-    .navbar-header .navbar-brand {
-        color: $theme-primary;
-        @include sans-serif-font;
-        font-weight: 700;
-        text-transform: uppercase;
-        &:hover,
-        &:focus {
-            color: darken($theme-primary, 10%);
-        }
-    }
-    .nav {
-        > li {
-            > a,
-            > a:focus {
-                text-transform: uppercase;
-                font-weight: 700;
-                font-size: 13px;
-                color: $theme-dark;
-                &:hover {
-                    color: $theme-primary;
-                }
-            }
-            &.active {
-                > a,
-                > a:focus {
-                    color: $theme-primary !important;
-                    background-color: transparent;
-                    &:hover {
-                        background-color: transparent;
-                    }
-                }
-            }
-        }
-    }
-    @media (min-width: 768px) {
-        background-color: transparent;
-        border-color: rgba(white, .3);
-        .navbar-header .navbar-brand {
-            color: rgba(white, .7);
-            &:hover,
-            &:focus {
-                color: white;
-            }
-        }
-        .nav > li > a,
-        .nav > li > a:focus {
-            color: rgba(white, .7);
-            &:hover {
-                color: white;
-            }
-        }
-        &.affix {
-            background-color: white;
-            border-color: rgba($theme-dark, .5);
-            .navbar-header .navbar-brand {
-                color: $theme-primary;
-                font-size: 14px;
-                &:hover,
-                &:focus {
-                    color: darken($theme-primary, 10%);
-                }
-            }
-            .nav > li > a,
-            .nav > li > a:focus {
-                color: $theme-dark;
-                &:hover {
-                    color: $theme-primary;
-                }
-            }
-        }
-    }
+iframe {
+    height: 800px;
+    width: calc(100vw - 400px);
+    border: none;
+    overflow: hidden;
+}
+
+/* Add the CSS for snap scrolling */
+.snap-container {
+scroll-snap-type: y mandatory;
+overflow-y: scroll;
+height: 100vh; /* Make sure the container takes full height */
+}
+
+.snap-section {
+scroll-snap-align: start;
+height: 100vh; /* Make each section take full height */
+}
+
+// Custom Navbar Styles
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: 100%;
+    width: 140px; /* Increased width by 20% */
+    background-color: transparent; /* Always transparent background */
+    border: none; /* Remove border if necessary */
+    z-index: 1000; /* Set a high z-index to appear above other content */
+}
+
+.navbar-header {
+    display: none; /* Hide the toggle button since it's not needed for vertical navbar */
+}
+
+.navbar-collapse {
+    padding: 0;
+}
+
+.nav > li {
+    display: block;
+}
+
+.nav > li > a {
+    padding: 10px 20px;
+    color: rgb(147, 82, 82) !important;
+    font-weight: bold; /* Set font to bold */
+    font-size: 14px; /* Set specific font size */
+    font-family: Courier; /* Set specific font style */
+    text-transform: capitalize; /* Ensure text is uppercase */
+    transition: transform 0.3s ease-in-out; /* Smooth animation */
+}
+
+.nav > li > a:hover {
+    transform: translateX(10px); /* Move text 10px to the right on hover */
+}
+
+.dropdown-menu {
+    display: none;
+    padding-left: 20px; /* Indent sub-items */
+    background-color: transparent; /* Transparent background */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove box shadow */
+    position: static; /* Ensure it stays within the normal document flow */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu > li > a {
+    font-size: 12px; /* Smaller font size for sub-items */
+    padding: 5px 20px; /* Adjust padding for sub-items */
+    font-family: Courier; /* Set specific font style for sub-items */
+    font-weight: bold;
+    color: rgb(147, 82, 82);
+}
+
+.dropdown-menu > li > a:hover {
+    transform: translateX(10px); /* Move text 10px to the right on hover */
+}
+
+/* Remove bullet points for sub-items */
+.dropdown-menu > li {
+    list-style-type: none;
 }
 
 // Homepage Header
@@ -164,21 +184,64 @@ header {
         padding: 100px 15px 100px;
         width: 100%;
         .header-content-inner {
-            h1 {
-                font-weight: 700;
-                text-transform: uppercase;
-                margin-top: 0;
-                margin-bottom: 0;
-            }
-            hr {
-                margin: 30px auto;
-            }
-            p {
-                font-weight: 300;
-                color: rgba(white, .7);
-                font-size: 16px;
-                margin-bottom: 50px;
-            }
+            margin-left: -40px !important; /* Move the content 80px to the left */
+        } 
+
+        .header-content-inner h1 {
+            font-family: Verdana,;
+            font-size: 70px;
+            font-weight: bold;
+            color: #2a2a25;
+            text-transform: capitalize;
+            margin-top: -100px; /* Move the h1 header 100px down */
+        }
+
+        .header-content-inner p {
+            font-family: Courier;
+            font-weight: bold;
+            font-size: 18px;
+            color: #000000;
+            margin-top: -40px; /* Move the p element 20px up */
+        }
+
+        .header-content-inner hr {
+            border-top: none; /* Add this rule to remove the border */
+        }
+
+        .stat {
+            color: #000; /* Change text color to black */
+            margin-bottom: 10px;
+            font-family: Garamond; /* Set font to Garamond */
+        }
+        .stat h3 {
+            font-size: 16px; /* Smaller font size for headers */
+            color: #000; /* Ensure header text color is black */
+            font-family: Courier; /* Set font to Courier */
+            font-weight: bold;
+        }
+        .stat .count {
+            font-size: 14px; /* Smaller font size for counts */
+            font-weight: bold;
+            color: #000; /* Ensure count text color is black */
+            font-family: 'Verdana', sans-serif; /* Set font to Verdana */
+        }
+        .stat-grid-container {
+            display: flex;
+            justify-content: center;
+            margin-top: -20px; /* Move the statistics section up by 50px */
+        }
+        .stat-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 500px; /* Restrict the width of the grid container */
+            gap: -10px; /* Add some gap between items */
+        }
+        .stat-item {
+            flex: 1 1 calc(30% - 20px); /* Adjust to make 3 columns */
+            text-align: center;
+            margin: 0px;
+            font-family: 'Verdana', sans-serif; /* Set font to Verdana */
         }
     }
     @media (min-width: 768px) {
@@ -206,6 +269,29 @@ header {
 }
 
 // Sections
+
+#overview {
+    background-color: #FFFDE7;
+    height: 120%;
+
+    hr.light {
+        border-top: none !important; /* Add this rule to remove the border */
+    }
+
+    .section-heading {
+        color: #000 !important; /* Change heading text color to black */
+        font-weight: bold !important; /* Make heading bold */
+        font-family: Courier !important; /* Set font to Courier */
+    }
+
+    .section-text {
+        color: #000 !important; /* Change text color to black */
+        font-family: Courier !important; /* Set font to Courier */
+        margin-top: 20px; /* Add some margin for spacing */
+        font-weight: bold !important;
+    }
+}
+
 
 .section-heading {
     margin-top: 0;
@@ -278,11 +364,12 @@ header {
     }
 }
 
-.call-to-action {
-    h2 {
-        margin: 0 auto 20px;
-    }
+// Other pages
+
+#participation {
+    background-color: #FFFDE7;
 }
+
 
 // Bootstrap Overrides
 .text-primary {
